@@ -1,12 +1,26 @@
 name = "bing-wall"
 main = "src/worker.js"
+account_id = "5f0f967f8a7514a497861b1e1f7147e5"
 compatibility_date = "2025-10-10"
+workers_dev = false
+preview_urls = false
+keep_vars = true
+routes = [
+  { pattern = "bing.newstardev.me", custom_domain = true }
+]
 
-# 定时任务：每天 00:05 UTC 拉取
 [triggers]
 crons = ["5 0 * * *"]
 
-# KV 绑定：Deploy 按钮会自动为你创建并写入 id
 [[kv_namespaces]]
 binding = "BING_WALL"
-id = "79ddadbc963a4475b6af1999c4ec9f4b"  # 占位；一键部署时会自动替换
+id = "79ddadbc963a4475b6af1999c4ec9f4b"
+
+[observability]
+enabled = true
+head_sampling_rate = 0.1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 0.1
+invocation_logs = true
